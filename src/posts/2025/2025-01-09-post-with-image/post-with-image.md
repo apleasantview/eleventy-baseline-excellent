@@ -21,18 +21,24 @@ Transforms any `<img>` or `<picture>` tags in HTML files as a post-processing st
 
 We can pass in overrides for every instance and use attributes. By default all images are set to be lazy loaded, but we can override this by directly setting `loading="eager"` and `decoding="sync" `on the `<img>` element.
 
-Another thing to note is the  `widths: ['auto']` setting, which by default only includes the original size image. We can set the dedicated `widths` to be used by adding `eleventy:widths="800,1200"` on the element. For images with [Markdown syntax](/blog/post-with-an-image/#markdown-syntax), I set fixed `widths` so we don't need to set a value on every instance.
+Another thing to note is the  `widths: ['auto']` setting, which by default only includes the original size image. We can set the dedicated `widths` to be used by adding `eleventy:widths="800,1200"` on the element. A single HTML `width` attribute (e.g. `width="400"`) is also treated as an alias for `eleventy:widths` when it is a valid integer. If both are set on the same element, Image gives `eleventy:widths` priority. For images with [Markdown syntax](/blog/post-with-an-image/#markdown-syntax), I set fixed `widths` so we don't need to set a value on every instance.
 
-`sizes` defaults to `auto`, which is by default applied to all lazy loading images. See: https://github.com/whatwg/html/pull/8008. We can overwrite this, by setting the `sizes` attribute directly on the `<img>` element, with something specific like `sizes="(max-width: 615px) 50vw, 100vw"`. Note:
+`sizes` defaults to `auto`, which is by default applied to all lazy loading images. See: https://github.com/whatwg/html/pull/8008. We can overwrite this with a normal `sizes` attribute, or, since [Image v7](https://github.com/11ty/image/releases/tag/v7.0.0), with `eleventy:sizes`, which also overrides any `sizes` set in the plugin config. Note:
 The `sizes` attribute is required if `widths` has more than one entry. No default value for is added for `sizes` for eagerly loaded images, so we need to set it explicitly.
 ```html
-<img src="./co-located-image.jpg" alt="alt text" eleventy:widths="200,600" sizes="100vw" loading="eager" decoding="sync">
+<img src="./co-located-image.jpg" alt="alt text" eleventy:widths="200,600" eleventy:sizes="100vw" loading="eager" decoding="sync">
 ```
 
-<img src="./asturias-1.jpg" alt="A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape" eleventy:widths="200,600" sizes="100vw" loading="eager" decoding="sync">
+<img src="./asturias-1.jpg" alt="A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape" eleventy:widths="200,600" eleventy:sizes="100vw" loading="eager" decoding="sync">
+
+If an image is already optimized elsewhere and you only want `width`/`height` (no Sharp re-encoding), Image v7 adds New `passthrough` format (usage: formats: ["passthrough"]).
+
+```html
+<img src="./co-located-image.jpg" alt="alt text" eleventy:formats="passthrough">
+```
 
 **Extra benefit:** we can use both relative and absolute image sources.
-One downside is that it comes with a higher build cost due to the post-processing step.
+One downside is that it comes with a higher build cost due to the post-processing step (unless you opt into `passthrough`).
 
 More info: https://www.11ty.dev/docs/plugins/image/#html-transform
 
@@ -54,10 +60,10 @@ We can also add custom attributes here ([Kudos to Aleksandr](https://www.aleksan
 
 ```markdown
 ![alt text](/path/to/image){attrs}
-![Close-up...](/assets/images/gallery/asturias-2.jpg){loading="eager" decoding="sync" eleventy:widths="400" sizes="100vw" class="grayscale"}
+![Close-up...](/assets/images/gallery/asturias-2.jpg){loading="eager" decoding="sync" eleventy:widths="400" eleventy:sizes="100vw" class="grayscale"}
 ```
 
-![Close-up of a delicate white flower with a yellow center, surrounded by green leaves](/assets/images/gallery/asturias-2.jpg){loading="eager" decoding="sync" eleventy:widths="400" sizes="100vw" class="grayscale"}
+![Close-up of a delicate white flower with a yellow center, surrounded by green leaves](/assets/images/gallery/asturias-2.jpg){loading="eager" decoding="sync" eleventy:widths="400" eleventy:sizes="100vw" class="grayscale"}
 
 As the Markdown syntax is based on the HTML Transform, we must also add a custom `sizes` attribute to the image if we want to eager-load the image.
 
