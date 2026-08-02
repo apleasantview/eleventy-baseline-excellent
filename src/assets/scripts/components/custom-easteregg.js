@@ -13,14 +13,15 @@ class customEasteregg extends HTMLElement {
     this.particleCount = parseInt(this.getAttribute('particle-count'), 10) || 30;
     this.codes = this.keywords.map(keyword => keyword.split(''));
     this.indexes = new Array(this.keywords.length).fill(0);
+    this.handleKeydown = this.handleKeydown.bind(this);
   }
 
   connectedCallback() {
-    document.addEventListener('keydown', this.handleKeydown.bind(this));
+    document.addEventListener('keydown', this.handleKeydown);
   }
 
   disconnectedCallback() {
-    document.removeEventListener('keydown', this.handleKeydown.bind(this));
+    document.removeEventListener('keydown', this.handleKeydown);
   }
 
   handleKeydown(event) {
@@ -40,7 +41,7 @@ class customEasteregg extends HTMLElement {
 
   triggerEffect(keyword) {
     console.log(`Hooray ${keyword}!`);
-    import('https://esm.run/canvas-confetti').then(({default: confetti}) => {
+    import('canvas-confetti').then(({default: confetti}) => {
       const scalar = 4;
       const customShape = confetti.shapeFromText({text: this.shape, scalar});
 

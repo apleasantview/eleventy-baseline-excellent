@@ -2,13 +2,14 @@ class CustomMasonry extends HTMLElement {
   constructor() {
     super();
     this.layoutMasonry = this.layoutMasonry.bind(this);
+    this.debounceLayout = this.debounceLayout.bind(this, 100);
   }
 
   connectedCallback() {
     // Defer initial layout to ensure styles are applied
     requestAnimationFrame(() => {
       this.layoutMasonry();
-      window.addEventListener('resize', this.debounceLayout.bind(this, 100));
+      window.addEventListener('resize', this.debounceLayout);
     });
   }
 
