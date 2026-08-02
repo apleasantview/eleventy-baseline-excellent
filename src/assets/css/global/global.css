@@ -7,6 +7,7 @@
 
 @import 'base/variables.css' layer(variables);
 @import 'base/global-styles.css' layer(global);
+@import 'base/view-transitions.css' layer(global);
 
 @import-glob 'compositions/*.css' layer(compositions);
 @import-glob 'blocks/*.css' layer(blocks);
