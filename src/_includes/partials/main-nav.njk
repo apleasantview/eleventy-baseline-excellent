@@ -7,12 +7,7 @@
     {% for item in navigation.top %}
       {% if item.submenu %}
         <li class="relative">
-          <button
-            data-submenu-toggle
-            aria-expanded="false"
-            aria-labelledby="mainnav-{{ loop.index }}"
-            aria-controls="mainnav-{{ loop.index }}-sub"
-          >
+          <button data-submenu-toggle aria-expanded="false" aria-controls="mainnav-{{ loop.index }}-sub">
             {{ item.text }} {% svg "misc/chev-down" %}
           </button>
           <ul class="nav-sublist | cluster" id="mainnav-{{ loop.index }}-sub">
