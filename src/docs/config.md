@@ -10,7 +10,7 @@ I like to divide things into small thematic areas, it helps me orient myself bet
 - **plugins.js**: Everything I or Eleventy considers to be a plugin: https://www.11ty.dev/docs/plugins/
 - **shortcodes.js**: Defines shortcodes for reusable content: https://www.11ty.dev/docs/shortcodes/
 
-Each configuration category (filters, plugins, shortcodes, etc.) is modularized. or example, `dates.js` within the `filters` folder contains date-related filters.
+Each configuration category (filters, plugins, shortcodes, etc.) is modularized. For example, `dates.js` within the `filters` folder contains date-related filters.
 
 ```js
 import dayjs from 'dayjs';

@@ -28,9 +28,9 @@ If you want to be inspired, have a look at [what Lea is doing here.](https://lea
 
 Consider that the domain is a hard coded value in the front matter.
 
-**Important:** I have relocated the creation of the images in the development process, so that the font only needs to be installed on your own system. The images are located in `src/assets/og-images` and are comitted.
+**Important:** I have relocated the creation of the images in the development process, so that the font only needs to be installed on your own system. The images are located in `src/assets/og-images` and are committed.
 
-This is fine as long as you only work locally with Markdown, and the font is always installed on your system. If you work with a CMS you must add the font cto where the site is built. Some CMS let you add fonts into the `prebuild` config. Otherwise it usually falls down to the _Ubuntu_ Font Family. You still have to adjust the script `src/_config/events/svg-to-jpeg.js` to something like:
+This is fine as long as you only work locally with Markdown, and the font is always installed on your system. If you work with a CMS you must add the font to where the site is built. Some CMS let you add fonts into the `prebuild` config. Otherwise it usually falls down to the _Ubuntu_ Font Family. You still have to adjust the script `src/_config/events/svg-to-jpeg.js` to something like:
 
 ```js
 import fs from 'fs';

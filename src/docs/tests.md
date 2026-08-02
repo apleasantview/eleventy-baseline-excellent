@@ -4,7 +4,7 @@ title: Tests
 
 You can run local automated accessibility tests with [pa11y-ci](https://github.com/pa11y/pa11y-ci).
 
-`src/common/pa11y.njk` generates a _pa11y-ci_ config file for all pages in the sitemap by default. You can also define custom paths to test in `src/_data/meta.js`, whithin `tests.pa11y.customPaths`.
+`src/common/pa11y.njk` generates a _pa11y-ci_ config file for all pages in the sitemap by default. You can also define custom paths to test in `src/_data/meta.js`, within `tests.pa11y.customPaths`.
 
 To run the tests, use the following command:
 

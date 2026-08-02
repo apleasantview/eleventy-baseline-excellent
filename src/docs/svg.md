@@ -18,7 +18,7 @@ The `svg.js` shortcode, introduced in version 3, allows for the seamless inclusi
 
 {% svg "misc/star", "A yellow star icon", "spin", "block-size: 4ex; fill: var(--color-tertiary);" %}
 
-The star icon resoves to:
+The star icon resolves to:
 
 `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 24 24" aria-label="A yellow star icon" style="block-size: 4ex; fill: var(--color-tertiary)" class="spin"><path> (...) </path></svg>`
 
