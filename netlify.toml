@@ -3,7 +3,6 @@ package = "netlify-plugin-cache"
   [plugins.inputs]
   paths = [ ".cache" ]
 
-
 [[headers]]
     for = "/*"
     [headers.values]
@@ -23,7 +22,6 @@ package = "netlify-plugin-cache"
     for = "/bundle/*"
     [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
 
 [build]
   command = "npm run build"
