@@ -8,7 +8,7 @@ const theme = {
   value: getColorPreference()
 };
 
-window.onload = () => {
+window.addEventListener('load', () => {
   const lightThemeToggle = document.querySelector('#light-theme-toggle');
   const darkThemeToggle = document.querySelector('#dark-theme-toggle');
   const switcher = document.querySelector('[data-theme-switcher]');
@@ -25,12 +25,12 @@ window.onload = () => {
 
   lightThemeToggle.setAttribute('aria-pressed', theme.value === 'light');
   darkThemeToggle.setAttribute('aria-pressed', theme.value === 'dark');
-};
+});
 
-// sync with system changes
+// sync with system changes, without storing them as an explicit choice
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({matches: isDark}) => {
   theme.value = isDark ? 'dark' : 'light';
-  setPreference();
+  reflectPreference();
   updateMetaThemeColor();
 });
 
@@ -42,16 +42,27 @@ function onClick(themeValue) {
   updateMetaThemeColor();
 }
 
-function getColorPreference() {
-  if (localStorage.getItem(storageKey)) {
+function getStoredPreference() {
+  // storage can be blocked entirely, the toggle should still work
+  try {
     return localStorage.getItem(storageKey);
-  } else {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  } catch (error) {
+    return null;
   }
 }
 
+function getColorPreference() {
+  return (
+    getStoredPreference() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  );
+}
+
 function setPreference() {
-  localStorage.setItem(storageKey, theme.value);
+  try {
+    localStorage.setItem(storageKey, theme.value);
+  } catch (error) {
+    // not persisted, but the current page still reflects the choice
+  }
   reflectPreference();
   updateMetaThemeColor();
 }
