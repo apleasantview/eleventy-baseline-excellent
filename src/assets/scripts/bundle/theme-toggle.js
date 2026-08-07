@@ -1,7 +1,7 @@
 const storageKey = 'theme-preference';
 const themeColors = {
-  dark: '{{ meta.themeLight }}',
-  light: '{{ meta.themeDark }}'
+  dark: '{{ meta.themeDark }}',
+  light: '{{ meta.themeLight }}'
 };
 
 const theme = {
@@ -27,11 +27,20 @@ window.addEventListener('load', () => {
   darkThemeToggle.setAttribute('aria-pressed', theme.value === 'dark');
 });
 
-// sync with system changes, without storing them as an explicit choice
+// sync with system changes only while the visitor has not picked a theme
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', ({matches: isDark}) => {
+  if (getStoredPreference()) {
+    return;
+  }
+
   theme.value = isDark ? 'dark' : 'light';
   reflectPreference();
   updateMetaThemeColor();
+
+  const lightThemeToggle = document.querySelector('#light-theme-toggle');
+  const darkThemeToggle = document.querySelector('#dark-theme-toggle');
+  lightThemeToggle?.setAttribute('aria-pressed', theme.value === 'light');
+  darkThemeToggle?.setAttribute('aria-pressed', theme.value === 'dark');
 });
 
 function onClick(themeValue) {
