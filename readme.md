@@ -8,15 +8,15 @@ Easy to use Eleventy starter, based on the workflow suggested by Andy Bell's [bu
 If you end up using this starter, feel free to send me a link, I'd love to see it!
 
 - [Eleventy Excellent](#eleventy-excellent)
-	- [Preview](#preview)
-	- [Features](#features)
-	- [First steps](#first-steps)
-	- [Development](#development)
-		- [Install dependencies](#install-dependencies)
-		- [Working locally](#working-locally)
-		- [Creating a production build](#creating-a-production-build)
-	- [Built with Eleventy Excellent](#built-with-eleventy-excellent)
-	- [Credits and Thank yous](#credits-and-thank-yous)
+  - [Preview](#preview)
+  - [Features](#features)
+  - [First steps](#first-steps)
+  - [Development](#development)
+    - [Install dependencies](#install-dependencies)
+    - [Working locally](#working-locally)
+    - [Creating a production build](#creating-a-production-build)
+  - [Built with Eleventy Excellent](#built-with-eleventy-excellent)
+  - [Credits and Thank yous](#credits-and-thank-yous)
 
 ## Preview
 
@@ -47,6 +47,16 @@ https://eleventy-excellent.netlify.app/
 - Tags in blog posts
 - Accessible blog pagination
 - A styleguide™
+
+## Vulnerability Notes (updated 2026-08-28)
+
+### `nanoid` override
+
+`package.json` pins `nanoid` under `overrides` forcing a patched 5.x (`@11ty/webc` and `postcss` declare older ranges).
+
+### extract-zip
+
+Chain: `pa11y-ci` --> `puppeteer` --> `@puppeteer/browsers` --> `extract-zip`. Ignored until pa11y / Puppeteer drops extract-zip.
 
 ## First steps
 
