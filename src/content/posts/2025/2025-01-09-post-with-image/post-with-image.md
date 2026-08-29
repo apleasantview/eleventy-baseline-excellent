@@ -30,7 +30,7 @@ The `sizes` attribute is required if `widths` has more than one entry. No defaul
 <img src="./co-located-image.jpg" alt="alt text" eleventy:widths="200,600" eleventy:sizes="100vw" loading="eager" decoding="sync">
 ```
 
-<img src="./asturias-1.jpg" alt="A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape" eleventy:widths="200,600" eleventy:sizes="100vw" loading="eager" decoding="sync">
+<img src="./asturias-1.jpg" alt="A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape" eleventy:widths="200,600" eleventy:sizes="100vw" loading="eager" decoding="sync" sizes="100vw">
 
 If an image is already optimized elsewhere and you only want `width`/`height` (no Sharp re-encoding), Image v7 adds New `passthrough` format (usage: formats: ["passthrough"]).
 
@@ -97,7 +97,7 @@ We can pass in manually all the conditions, and add `null` to skip. The argument
 
 {% endraw %}
 
-{% image "/assets/images/gallery/asturias-3.jpg", "A traditional Asturian village with it's raised granaries, surrounded by lush green hills and mountains", "An example for the positional parameters shortcode.", "lazy", "text-center", "grayscale", [200, 400], "(min-width:30em) 50vw, 100vw",  ['webp', 'jpeg'] %}
+{% image {"src": "/assets/images/gallery/asturias-3.jpg", "alt": "A traditional Asturian village with it's raised granaries, surrounded by lush green hills and mountains", "caption": "An example for the positional parameters shortcode.", "loading": "lazy", "containerClass": "text-center", "imageClass": "grayscale", "widths": [200, 400], "sizes": "(min-width:30em) 50vw, 100vw", "formats": ['webp', 'jpeg']} %}
 
 **Example:** predefine `widths` and `sizes` using Nunjuck's `set` tag or front matter fields, and dynamically get the image path, like I do in the "[Built with](/blog/built-with/)" template.
 
@@ -136,7 +136,7 @@ This shortcode allows us to specify parameters in any order or only include the 
 
 {% endraw %}
 
-{% imageKeys {
+{% image {
   "src": "/assets/images/gallery/asturias-3.jpg",
   "alt": "A traditional Asturian village with it's raised granaries, surrounded by lush green hills and mountains",
   "caption": "An example for the named parameters shortcode.",
@@ -187,7 +187,7 @@ The shortcode can be much terser than the HTML syntax, while the HTML syntax is 
 
 {% endraw %}
 
-{% image "/assets/images/gallery/asturias-1.jpg", "A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape", "Example image using the positional shortcode", "eager", "feature", "grayscale" %}
+{% image {"src": "/assets/images/gallery/asturias-1.jpg", "alt": "A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape", "caption": "Example image using the positional shortcode", "loading": "eager", "containerClass": "feature", "imageClass": "grayscale", sizes: "auto"} %}
 
 <figure class="feature">
   <img src="/assets/images/gallery/asturias-1.jpg" alt="A picturesque valley showcasing majestic mountains and lush forests, creating a serene and captivating landscape" loading="eager" decoding="sync" class="grayscale" sizes="100vw">

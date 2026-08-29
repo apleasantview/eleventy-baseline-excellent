@@ -10,10 +10,10 @@ schema: BlogPosting
     {% if image %}
       <!-- image -->
       {%
-        imageKeys {
+        image {
           "src": image,
           "alt": alt or "",
-          "credit": credit,
+          "caption": credit,
           "loading": "eager",
           "containerClass": "feature"
         }

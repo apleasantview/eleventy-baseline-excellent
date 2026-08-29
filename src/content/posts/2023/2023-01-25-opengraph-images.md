@@ -16,6 +16,6 @@ This starter generates these images for your blog posts automatically. They take
 
 The fallback and default image for all other pages is the image set as `opengraph_default` in the `meta.js` global data file.
 
-{% image "./src/" + meta.opengraph_default, meta.opengraph_default_alt, "This is what the general OG image for non-blog posts looks like" %}
+{% image {"src": "/" + meta.opengraph_default, "alt": meta.opengraph_default_alt, "caption": "This is what the general OG image for non-blog posts looks like"} %}
 
 A more detailed explanation can be found in the [docs](/get-started/#open-graph-images).

@@ -13,9 +13,9 @@
             <span class="visually-hidden">{{ meta.dialog.next }}</span>{% svg "misc/arrow-right" %}
           </button>
         </div>
-        {%- image item.image, item.alt, item.caption -%}
+        {%- image {"src": item.image, "alt": item.alt, "caption": item.caption} -%}
       </dialog>
-      <button data-index="{{ loop.index }}">{%- image item.image, item.alt -%}</button>
+      <button data-index="{{ loop.index }}">{%- image {"src": item.image, "alt": item.alt} -%}</button>
     {%- endfor -%}
   </div>
 
