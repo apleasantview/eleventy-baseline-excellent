@@ -5,25 +5,25 @@ excludeFromSitemap: true
 ---
 {%- set postslist = collections.posts -%}
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ meta.lang or page.lang }}" xml:base="{{ meta.url }}/">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ settings.defaultLanguage or page.lang }}" xml:base="{{ settings.url }}">
   <title>{{ meta.blog.name }}</title>
   <subtitle>{{ meta.blog.description }}</subtitle>
-  <link href="{{ permalink | htmlBaseUrl(meta.url) }}" rel="self" />
-  <link href="{{ meta.url | addPathPrefixToFullUrl }}" />
+  <link href="{{ permalink | htmlBaseUrl(settings.url) }}" rel="self" />
+  <link href="{{ settings.url | addPathPrefixToFullUrl }}" />
   <updated>{{ postslist | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
-  <id>{{ meta.url | addPathPrefixToFullUrl }}</id>
+  <id>{{ settings.url | addPathPrefixToFullUrl }}</id>
   <author>
     <name>{{ meta.author.name }}</name>
   </author>
   {%- for post in postslist | reverse -%}
-  {%- set absolutePostUrl = post.url | absoluteUrl(meta.url) -%}
+  {%- set absolutePostUrl = post.url | absoluteUrl(settings.url) -%}
     <entry>
       <title>{{ post.data.title }}</title>
       <link href="{{ absolutePostUrl }}" />
       <updated>{{ post.date | dateToRfc3339 }}</updated>
       <id>{{ absolutePostUrl }}</id>
       <content type="html">
-				{{ post.content | renderTransforms(post.data.page, meta.url) }}
+				{{ post.content | renderTransforms(post.data.page, settings.url) }}
  			</content>
     </entry>
   {%- endfor -%}

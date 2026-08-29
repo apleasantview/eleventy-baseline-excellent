@@ -6,7 +6,7 @@ excludeFromSitemap: true
 User-agent: *
 Disallow: /404.html
 
-Sitemap: {{ meta.url }}/sitemap.xml
+Sitemap: {{ "/sitemap.xml" | absoluteUrl(settings.url) }}
 
 # https://github.com/ai-robots-txt/ai.robots.txt/blob/main/robots.txt
 

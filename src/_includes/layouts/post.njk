@@ -44,12 +44,12 @@ schema: BlogPosting
 
   <!--  h-card infos: https://indieweb.org/authorship -->
   <div hidden class="h-entry">
-    <a class="u-url" href="{{ page.url | url | absoluteUrl(meta.url) }}">{{ title }}</a>
-    <a class="p-name u-url" rel="author" href="{{ meta.url }}">{{ meta.author.name }}</a>
+    <a class="u-url" href="{{ page.url | url | absoluteUrl(settings.url) }}">{{ title }}</a>
+    <a class="p-name u-url" rel="author" href="{{ settings.url }}">{{ meta.author.name }}</a>
     <img
       eleventy:ignore
       class="u-author h-card"
-      src="{{ meta.author.avatar | url | absoluteUrl(meta.url) }}"
+      src="{{ meta.author.avatar | url | absoluteUrl(settings.url) }}"
       alt="{{ meta.author.name }}"
     />
   </div>

@@ -1,3 +1,9 @@
+import settings from './settings.js';
+
+// Site *identity* is moving to `_data/settings.js`; this file keeps UI strings and the
+// per-feature config Baseline has no opinion on. The five keys below still have consumers
+// in `head/meta-info.njk`, `layouts/base.njk` and `_includes/schemas/` — all of which are
+// replaced later. They go when their last reader does, not before.
 export const url = process.env.URL || 'http://localhost:8080';
 // Extract domain from `url`
 export const domain = new URL(url).hostname;
@@ -84,13 +90,16 @@ export const themeSwitch = {
 };
 export const greenweb = {
   // https://carbontxt.org/
-  disclosures: [
-    {
-      docType: 'sustainability-page',
-      url: `${url}/sustainability/`,
-      domain: domain
-    }
-  ],
+  // `new URL(path, base)` rather than concatenation
+  disclosures: settings.url
+    ? [
+        {
+          docType: 'sustainability-page',
+          url: new URL('/sustainability/', settings.url).href,
+          domain: new URL(settings.url).hostname
+        }
+      ]
+    : [],
   services: [{domain: 'netlify.com', serviceType: 'cdn'}]
 };
 export const tests = {

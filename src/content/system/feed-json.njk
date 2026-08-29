@@ -6,9 +6,9 @@ excludeFromSitemap: true
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "{{ meta.blog.name }}",
-  "language": "{{ meta.lang or page.lang }}",
-  "home_page_url": "{{ meta.url | addPathPrefixToFullUrl }}",
-  "feed_url": "{{ permalink | htmlBaseUrl(meta.url) }}",
+  "language": "{{ settings.defaultLanguage or page.lang }}",
+  "home_page_url": "{{ settings.url | addPathPrefixToFullUrl }}",
+  "feed_url": "{{ permalink | htmlBaseUrl(settings.url) }}",
   "description": "{{ meta.blog.description }}",
   "authors": [
     {
@@ -18,12 +18,12 @@ excludeFromSitemap: true
   "items": [
 		{%- set postslist = collections.posts -%}
 		{%- for post in postslist | reverse -%}
-		{%- set absolutePostUrl = post.url | absoluteUrl(meta.url) -%}
+		{%- set absolutePostUrl = post.url | absoluteUrl(settings.url) -%}
     {
       "id": "{{ absolutePostUrl }}",
       "url": "{{ absolutePostUrl }}",
       "title": "{{ post.data.title }}",
-      "content_html": {% if post.content %}{{ post.content | renderTransforms(post.data.page, meta.url) | dump | safe }}{% else %}""{% endif %},
+      "content_html": {% if post.content %}{{ post.content | renderTransforms(post.data.page, settings.url) | dump | safe }}{% else %}""{% endif %},
       "date_published": "{{ post.date | dateToRfc3339 }}"
     }
     {% if not loop.last %},{% endif %}
