@@ -1,5 +1,5 @@
 ---
-title: Images
+title: 'Images'
 ---
 
 Using the [Eleventy Image](https://www.11ty.dev/docs/plugins/image/) plugin, there are three ways to handle image optimization: HTML Transform, Markdown syntax, and Nunjucks shortcodes. [See the dedicated blog post to dive (much) deeper.](/blog/post-with-an-image/)

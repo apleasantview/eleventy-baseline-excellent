@@ -1,10 +1,10 @@
 ---
-title: Legal notice
+title: 'Legal notice'
+slug: 'legal-notice'
 discover:
-  title: Legal notice
-permalink: /imprint/index.html
-description: Imprint infos
-layout: page
+  title: 'Legal notice'
+permalink: '/imprint/index.html'
+description: 'Imprint infos'
 ---
 
 Edit your details in `_data/personal.yaml`

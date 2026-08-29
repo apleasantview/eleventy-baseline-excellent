@@ -1,5 +1,5 @@
 ---
-title: CSS
+title: 'CSS'
 ---
 
 Add and delete your globally available custom block stylesheets in `src/assets/css/global/blocks/*.css`.

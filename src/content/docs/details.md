@@ -1,5 +1,5 @@
 ---
-title: Details
+title: 'Details'
 ---
 
 The `<custom-details>` WebC component has a corresponding Nunjucks include.

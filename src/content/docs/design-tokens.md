@@ -1,5 +1,5 @@
 ---
-title: Design tokens
+title: 'Design tokens'
 ---
 
 Edit all your preferences (colors, fluid text sizes etc.) in `src/_data/designTokens/*.json`.

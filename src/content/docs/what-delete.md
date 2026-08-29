@@ -1,5 +1,5 @@
 ---
-title: What can be deleted
+title: 'What can be deleted'
 ---
 
 **Everything, of course**

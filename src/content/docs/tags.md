@@ -1,5 +1,5 @@
 ---
-title: Tags
+title: 'Tags'
 ---
 
 This was probably the most opinionated decision: tags have been integrated since version 2.0.

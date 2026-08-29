@@ -1,8 +1,8 @@
 ---
-title: About
-permalink: /about/index.html
+title: 'About'
+slug: 'about'
+permalink: '/about/index.html'
 description: 'Eleventy Excellent is inspired bythe companion website of Andy Bell’s talk "Be the browser’s mentor, not its micromanager".'
-layout: page
 ---
 
 This starter uses modern CSS, fluid type & space, flexible Layouts and Progressive Enhancement, wrapped in a basic template.

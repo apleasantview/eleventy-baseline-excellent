@@ -1,5 +1,5 @@
 ---
-title: Platforms (icons)
+title: 'Platforms (icons)'
 ---
 
 Find and set your platform icons in `src/assets/svg`, in the "platform" directory.

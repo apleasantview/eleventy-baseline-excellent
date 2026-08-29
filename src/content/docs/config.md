@@ -1,5 +1,5 @@
 ---
-title: Config
+title: 'Config'
 ---
 
 I like to divide things into small thematic areas, it helps me orient myself better. Configurations are structured into separate modules in `src/_config` and are then imported into the main configuration file.

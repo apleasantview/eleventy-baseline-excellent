@@ -1,5 +1,5 @@
 ---
-title: Pagination
+title: 'Pagination'
 ---
 
 The blog posts use [Eleventy's pagination feature](https://www.11ty.dev/docs/pagination/). The logic for this can be found in tha partial `src/_includes/partials/pagination.njk`, the layout `src/_layouts/blog.njk` includes it, how many entries should be on a page is defined in `src/pages/blog.md`.

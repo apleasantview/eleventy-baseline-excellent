@@ -1,5 +1,5 @@
 ---
-title: Favicons
+title: 'Favicons'
 ---
 
 All "necessary" favicons are in `src/assets/images/favicon`, and copied over to the root of the output folder.

@@ -1,11 +1,23 @@
----
-layout: base
-title: Blog
-description: 'All blog posts can be found here'
-pagination:
-  data: collections.allPosts
-  size: 8
-permalink: 'blog/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+---js
+const layout = 'layouts/base.njk';
+const title = 'Blog';
+const description = 'All blog posts can be found here';
+
+const pagination = {
+	data: 'collections.allPosts',
+	size: 8
+};
+
+// Page 0 is /blog/, every page after it is /blog/page-N/.
+const permalink = (data) =>
+	data.pagination.pageNumber >= 1
+		? `blog/page-${data.pagination.pageNumber + 1}/index.html`
+		: 'blog/index.html';
+
+const eleventyComputed = {
+	slug: (data) =>
+		data.pagination.pageNumber >= 1 ? `blog-${data.pagination.pageNumber + 1}` : 'blog'
+};
 ---
 
 <div class="wrapper">

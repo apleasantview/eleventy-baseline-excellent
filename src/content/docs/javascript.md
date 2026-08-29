@@ -1,5 +1,5 @@
 ---
-title: JavaScript
+title: 'JavaScript'
 ---
 
 This starter has **no real JS dependency**. If JavaScript is not available, components that rely on it -- like the theme switcher -- will be hidden. If you opted in for the drawer menu, pills will be shown instead.

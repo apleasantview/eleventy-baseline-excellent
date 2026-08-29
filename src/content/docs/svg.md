@@ -1,5 +1,5 @@
 ---
-title: SVG
+title: 'SVG'
 ---
 
 All SVG icons used in the starter are in `src/assets/svg`. There is a directory dedicated to the dividers, the platform icons and a general folder called "misc".

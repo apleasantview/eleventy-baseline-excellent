@@ -1,5 +1,5 @@
 ---
-title: Fonts
+title: 'Fonts'
 ---
 
 This starter uses two custom fonts, Red Hat Display and Atkinson Hyperlegible. You can add or delete fonts in `src/assets/fonts`.

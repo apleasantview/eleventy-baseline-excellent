@@ -1,9 +1,9 @@
 ---
-title: Sustainability
-layout: page
+title: 'Sustainability'
+slug: 'sustainability'
 eleventyExcludeFromCollections: true
 excludeFromSitemap: true
-permalink: /sustainability/index.html
+permalink: '/sustainability/index.html'
 ---
 
 **Carbon Footprint**: This Website has a A+ Carbon Rating. [View full analysis on websitecarbon.com](https://www.websitecarbon.com/website/eleventy-excellent-netlify-app/)

@@ -1,5 +1,5 @@
 ---
-title: Template Languages
+title: 'Template Languages'
 ---
 
 We use the following [template languages](https://www.11ty.dev/docs/languages/):

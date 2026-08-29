@@ -1,5 +1,5 @@
 ---
-title: Schema
+title: 'Schema'
 ---
 
 Schema markup provides additional context for search engines and screen readers. The main schema template is included in the `<head>` via `src/_includes/head/schema.njk`. New schemas should be placed in `src/_includes/schemas/`.

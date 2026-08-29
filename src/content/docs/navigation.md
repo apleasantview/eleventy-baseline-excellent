@@ -1,5 +1,5 @@
 ---
-title: Navigation
+title: 'Navigation'
 ---
 
 Edit your navigation items in `src/_data/navigation.js`.

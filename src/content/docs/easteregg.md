@@ -1,5 +1,5 @@
 ---
-title: Easteregg
+title: 'Easteregg'
 ---
 
 The `<custom-easteregg>` component is by default in the base layout in `src/_layouts/base.njk`. Just delete the two lines if you don't want to use it. The component is

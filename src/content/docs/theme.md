@@ -1,5 +1,5 @@
 ---
-title: Theme (dark / light mode)
+title: 'Theme (dark / light mode)'
 ---
 
 With version 2.0 I introduced dark and light mode. This is not intended to be a gimmick, but to support the accessibility of the site. And I tend to read blog posts at night, and if there is no dark mode then I leave the tab for later, and we all know how that ends.

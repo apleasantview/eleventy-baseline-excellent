@@ -1,9 +1,9 @@
 ---
 title: 'Accessibility Statement'
+slug: 'accessibility-statement'
 description: 'Commitment to digital accessibility and how to report accessibility issues.'
-date: "Last Modified"
-permalink: /accessibility/index.html
-layout: page
+date: 'Last Modified'
+permalink: '/accessibility/index.html'
 ---
 
 Accessibility design is about ensuring equal access for people with disabilities. It is about removing barriers to access.

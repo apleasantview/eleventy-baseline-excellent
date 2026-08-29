@@ -1,5 +1,6 @@
 ---
 title: 'Post with an image'
+slug: 'post-with-an-image'
 description: "We can use Markdown, Nunjucks shortcodes or pure HTML to add images to posts and pages."
 date: 2025-01-09
 tags: ['image', 'feature']

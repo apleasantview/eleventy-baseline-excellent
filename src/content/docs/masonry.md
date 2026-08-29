@@ -1,5 +1,5 @@
 ---
-title: Masonry
+title: 'Masonry'
 ---
 
 
