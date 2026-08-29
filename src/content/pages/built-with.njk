@@ -38,7 +38,13 @@ widths: [400, 520]
       <!-- you find tha data for that in src/_data/builtwith.json -->
       {% for site in builtwith | shuffle %}
         <custom-card clickable img-square class="text-step-min-1 spot-color-theme-bg">
-          {% image {"src": "/assets/images/screenshots/" + site.filename + ".jpg", "alt": site.name, "widths": widths, "sizes": sizes} %}
+          {# custom-card exposes named slots only, so an unslotted child is discarded.
+             The starter's own shortcode hardcoded slot="image"; Baseline's does not, and
+             `attrs` lands on <img> rather than <picture>. figure rather than div because
+             custom-card.css places the image with `> :is(picture, figure)`. #}
+          <figure slot="image">
+            {% image {"src": "/assets/images/screenshots/" + site.filename + ".jpg", "alt": site.name, "widths": widths, "sizes": sizes} %}
+          </figure>
           <h3 slot="headline" class="text-step-min-1">{{ site.name }}</h3>
 
           <p slot="content">{{ site.description }}</p>
