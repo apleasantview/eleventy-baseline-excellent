@@ -30,7 +30,7 @@ export default async function (eleventyConfig) {
 	// --------------------- Passthrough File Copy
 
 	// -- same path
-	['src/assets/fonts/', 'src/assets/images/template', 'src/assets/og-images'].forEach(path =>
+	['src/assets/fonts/', 'src/assets/images/template'].forEach(path =>
 		eleventyConfig.addPassthroughCopy(path)
 	);
 
@@ -106,9 +106,8 @@ export default async function (eleventyConfig) {
 	});
 
 	// --------------------- Events: after build
-	if (process.env.ELEVENTY_RUN_MODE === 'serve') {
-		eleventyConfig.on('eleventy.after', events.svgToJpeg);
-	}
+	// Unconditional now that svgToJpeg writes into dist/ rather than src/.
+	eleventyConfig.on('eleventy.after', events.svgToJpeg);
 }
 
 export const config = baselineConfig;
