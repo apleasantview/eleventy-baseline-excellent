@@ -5,7 +5,7 @@ import path from 'node:path';
 const dataPath = './src/_data/builtwith.json';
 const screenshotDir = path.join(
   path.dirname(new URL(import.meta.url).pathname),
-  '../../assets/images/screenshots'
+  '../../src/assets/images/screenshots'
 );
 
 async function fetchScreenshot(url, filePath) {

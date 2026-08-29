@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import sharp from 'sharp';
 import {sharpsToIco} from 'sharp-ico';
-import {pathToSvgLogo} from '../../_data/meta.js';
+import {pathToSvgLogo} from '../../src/_data/meta.js';
 
 async function createFavicons() {
   const outputDir = 'src/assets/images/favicon';

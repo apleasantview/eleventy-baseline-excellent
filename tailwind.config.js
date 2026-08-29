@@ -4,8 +4,8 @@ import postcss from 'postcss';
 import postcssJs from 'postcss-js';
 import plugin from 'tailwindcss/plugin';
 
-import {clampGenerator} from './src/_config/utils/clamp-generator.js';
-import {tokensToTailwind} from './src/_config/utils/tokens-to-tailwind.js';
+import {clampGenerator} from './_config/utils/clamp-generator.js';
+import {tokensToTailwind} from './_config/utils/tokens-to-tailwind.js';
 
 // Raw design tokens
 import borderRadiusTokens from './src/_data/designTokens/borderRadius.json';
