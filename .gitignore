@@ -11,3 +11,8 @@ src/_includes/scripts
 
 # secret data
 .env
+
+# usual suspects
+temp/
+!/src/content/tags/
+!/src/assets/css/local/
