@@ -1,9 +1,8 @@
 import settings from './settings.js';
 
-// Site *identity* is moving to `_data/settings.js`; this file keeps UI strings and the
-// per-feature config Baseline has no opinion on. The five keys below still have consumers
-// in `head/meta-info.njk`, `layouts/base.njk` and `_includes/schemas/` — all of which are
-// replaced later. They go when their last reader does, not before.
+// Site identity lives in `_data/settings.js`; this file keeps UI strings and per-feature
+// config Baseline has no opinion on. After the head swap and the graph, only two of the block
+//  below still have readers: `siteName` (feed titles) and `siteType` (`_data/schema.js`).
 export const url = process.env.URL || 'http://localhost:8080';
 // Extract domain from `url`
 export const domain = new URL(url).hostname;

@@ -4,6 +4,8 @@ export default {
 
 	// Suppresses Baseline's site-default share card on posts.
 	ogImage: '',
+	type: 'article',
+	articleType: 'BlogPosting',
 
 	permalink: function ({ slug, page }) {
 		if (!slug) {
