@@ -2,6 +2,9 @@ export default {
 	tags: 'posts',
 	layout: 'layouts/post.njk',
 
+	// Suppresses Baseline's site-default share card on posts.
+	ogImage: '',
+
 	permalink: function ({ slug, page }) {
 		if (!slug) {
 			console.warn(`Warning: No slug found for ${page.inputPath}`);
