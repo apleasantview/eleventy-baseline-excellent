@@ -27,6 +27,23 @@
     <meta property="og:image:height" content="630" />
   {% endif %}
 
+  {#
+    The asset sources are esbuild entries now, and esbuild does not render Nunjucks —
+    a `{{ … }}` left in a script ships to the browser as a literal string. Anything the
+    scripts need is handed in from the page instead.
+  #}
+  <script>
+    window.__site = {
+      themeDark: '{{ meta.themeDark }}',
+      themeLight: '{{ meta.themeLight }}',
+      navBreakpoint: '{{ designTokens.viewports.navigation }}'
+    };
+  </script>
+
+  {# Critical path: inlined so the theme is on <html> before first paint. #}
+  {% set jsThemeTogglePath = _baseline.paths.assets ~ "js/bundle/theme-toggle.js" %}
+  {{ jsThemeTogglePath | inlineESbuild({ minify: true }) | safe }}
+
   {% include "head/meta-info.njk" %}
 
   <body class="{{ layout }}">

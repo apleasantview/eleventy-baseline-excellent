@@ -1,7 +1,11 @@
 const storageKey = 'theme-preference';
+// Handed in by base.njk on `window.__site`. This file is an esbuild entry now, and
+// esbuild does not render Nunjucks — a template placeholder here would ship to the
+// browser as a literal string. Fallbacks match meta.js so the toggle still works
+// if the head script is missing.
 const themeColors = {
-  dark: '{{ meta.themeDark }}',
-  light: '{{ meta.themeLight }}'
+  dark: window.__site?.themeDark || '#2e2e2e',
+  light: window.__site?.themeLight || '#f8f8f8'
 };
 
 const theme = {
