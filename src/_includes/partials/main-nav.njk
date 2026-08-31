@@ -68,17 +68,11 @@
     </button>
   </template>
 
-  {% css "local" %}
-    {% include "css/nav-main-drawer-cls.css" %}
-  {% endcss %}
-
-  {% js "defer" %}
-    {% include "scripts/nav-drawer.js" %}
-  {% endjs %}
+  {% set jsNavDrawerPath = _baseline.paths.assets ~ "js/bundle/nav-drawer.js" %}
+  {{ jsNavDrawerPath | inlineESbuild({ minify: true }) | safe }}
 {% endif %}
 
 {% if subMenu %}
-  {% js "defer" %}
-    {% include "scripts/nav-sub.js" %}
-  {% endjs %}
+  {% set jsNavSubPath = _baseline.paths.assets ~ "js/bundle/nav-sub.js" %}
+  {{ jsNavSubPath | inlineESbuild({ minify: true }) | safe }}
 {% endif %}

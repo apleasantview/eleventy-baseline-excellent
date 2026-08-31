@@ -39,7 +39,10 @@ export default async function (eleventyConfig) {
 		'src/assets/images/favicon/*': '/',
 
 		// -- node_modules
-		'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`
+		'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`,
+
+		// Custom elements referenced by <script src> rather than bundled.
+		'src/assets/js/components/': `assets/js/components/`
 	});
 
 	// 	--------------------- Library and Data
@@ -60,8 +63,6 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addFilter('alphabetic', filters.sortAlphabetically);
 
 	// --------------------- Shortcodes
-	// Not `image` — Baseline registers that one, and the call sites convert to its
-	// options-object form.
 	eleventyConfig.addShortcode('svg', shortcodes.svgShortcode);
 	eleventyConfig.addShortcode('year', () => `${new Date().getFullYear()}`);
 
@@ -98,12 +99,6 @@ export default async function (eleventyConfig) {
 			}
 		});
 	}
-
-	// --------------------- Events: before build
-	eleventyConfig.on('eleventy.before', async () => {
-		await events.buildAllCss();
-		await events.buildAllJs();
-	});
 
 	// --------------------- Events: after build
 	// Unconditional now that svgToJpeg writes into dist/ rather than src/.

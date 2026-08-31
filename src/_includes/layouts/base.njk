@@ -58,7 +58,8 @@
 
     {% include "partials/footer.njk" %}
     {%- if meta.easteregg -%}
-      <script type="module" src="/assets/scripts/components/custom-easteregg.js"></script>
+      {% set jsEasterEggPath = _baseline.paths.assets ~ "js/components/custom-easteregg.js" %}
+      {{ jsEasterEggPath | inlineESbuild({ minify: true }) | safe }}
       <custom-easteregg></custom-easteregg>
     {%- endif -%}
   </body>

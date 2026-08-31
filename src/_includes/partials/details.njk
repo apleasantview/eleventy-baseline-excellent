@@ -22,10 +22,5 @@
   {%- endfor -%}
 </div>
 
-{% css "local" %}
-  {% include "css/details.css" %}
-{% endcss %}
-
-{% js "defer" %}
-  {% include "scripts/details.js" %}
-{% endjs %}
+{% set jsDetailsPath = _baseline.paths.assets ~ "js/bundle/details.js" %}
+{{ jsDetailsPath | inlineESbuild({ minify: true }) | safe }}
