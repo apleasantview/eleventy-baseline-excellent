@@ -11,6 +11,9 @@ import shortcodes from './_config/shortcodes.js';
 import plugins from './_config/plugins.js';
 import events from './_config/events.js';
 
+// patches to Baseline
+import patchImageShortcode from './_patches/image-shortcode.js';
+
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function (eleventyConfig) {
 	await eleventyConfig.addPlugin(baseline(settings));
@@ -84,10 +87,17 @@ export default async function (eleventyConfig) {
 		useTransform: true
 	});
 
+	// ---------------------  Images
+	// The image shortcode patch.
+	eleventyConfig.addPlugin(patchImageShortcode);
+	
 	// Baseline registers the `image` shortcode but not the transform, both are wanted.
 	// EXPERIMENT: skip the transform during Baseline's pre-pass.
 	if (process.env.BASELINE_PREPASS_ACTIVE !== '1') {
 		eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
+			// Same output as the Baseline shortcode.
+			urlPath: '/media/',
+			outputDir: 'dist/media/',
 			formats: ['webp', 'jpeg'],
 			widths: ['auto'],
 			htmlOptions: {
