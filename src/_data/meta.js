@@ -1,16 +1,10 @@
 import settings from './settings.js';
 
 // Site identity lives in `_data/settings.js`; this file keeps UI strings and per-feature
-// config Baseline has no opinion on. After the head swap and the graph, only two of the block
-//  below still have readers: `siteName` (feed titles) and `siteType` (`_data/schema.js`).
-export const url = process.env.URL || 'http://localhost:8080';
-// Extract domain from `url`
-export const domain = new URL(url).hostname;
-export const siteName = 'Eleventy Excellent';
-export const siteDescription = 'Eleventy starter for building modern, resilient websites';
-export const siteType = 'Person'; // schema
-export const locale = 'en_EN';
-export const lang = 'en';
+// config Baseline has no opinion on. `url`, `domain`, `siteDescription`, `locale` and `lang`
+// went with the hand-written head and schema templates that read them.
+export const siteName = 'Eleventy Excellent'; // feed titles in head/meta-info.njk
+export const siteType = 'Person'; // which spine node _data/schema.js builds
 export const skipContent = 'Skip to content';
 // for the site content author, used in <head> meta and post h-card microformat
 export const author = {
