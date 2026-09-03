@@ -1,11 +1,21 @@
----
-layout: base
-title: Blog
-description: 'All blog posts can be found here'
-pagination:
-  data: collections.allPosts
+---js
+const layout = 'base';
+const title = 'Blog';
+const description = 'All blog posts can be found here';
+
+const pagination = {
+  data: 'collections.allPosts',
   size: 8
-permalink: 'blog/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+};
+
+const permalink =
+  'blog/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html';
+
+const eleventyComputed = {
+  // Mirrors the permalink: page one is /blog/, the rest are /blog/page-N/.
+  slug: (data) =>
+    data.pagination.pageNumber === 0 ? 'blog' : `blog-page-${data.pagination.pageNumber + 1}`
+};
 ---
 
 <div class="wrapper">

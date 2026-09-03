@@ -1,15 +1,27 @@
----
-fontDisplay: "'Red Hat Display', Ubuntu" # needed created in local development, font must be installed on your system.
-fontBody: "'Atkinson Hyperlegible', Ubuntu" # needed created in local development, font must be installed on your system.
-background: '#FBBE25'
-text: '#161616'
-siteUrl: 'eleventy-excellent.netlify.app'
-pagination:
-  data: collections.allPosts
-  size: 1
-  alias: post
-permalink: '/assets/og-images/{{ post.data.title | slugify }}-preview.svg'
-eleventyExcludeFromCollections: true
+---js
+// Needed when generating locally: the font must be installed on your system.
+const fontDisplay = "'Red Hat Display', Ubuntu";
+const fontBody = "'Atkinson Hyperlegible', Ubuntu";
+
+const background = '#FBBE25';
+const text = '#161616';
+const siteUrl = 'eleventy-excellent.netlify.app';
+
+const pagination = {
+  data: 'collections.allPosts',
+  size: 1,
+  alias: 'post'
+};
+
+const permalink = '/assets/og-images/{{ post.data.title | slugify }}-preview.svg';
+
+const eleventyExcludeFromCollections = true;
+
+const eleventyComputed = {
+  // One SVG per post, all from this one file. A per-page slug keeps Baseline's
+  // slug index from seeing thirteen pages claiming this file's slug.
+  slug: (data) => `og-${data.post.data.page.fileSlug}`
+};
 ---
 
 <svg

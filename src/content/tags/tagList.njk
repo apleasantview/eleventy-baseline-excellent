@@ -1,12 +1,21 @@
----
-layout: tags
-pagination:
-  data: collections.tagList
-  size: 1
-  alias: tag
-permalink: /tags/{{ tag | slugify }}/
-eleventyComputed:
-  title: '{{ meta.blog.tagSingle }}: {{ tag }}'
+---js
+const layout = 'tags';
+
+const pagination = {
+  data: 'collections.tagList',
+  size: 1,
+  alias: 'tag'
+};
+
+const permalink = '/tags/{{ tag | slugify }}/';
+
+const eleventyComputed = {
+  title: '{{ meta.blog.tagSingle }}: {{ tag }}',
+
+  // One input file, one page per tag. Without a per-page slug every one of
+  // them inherits the file's, and Baseline's slug index throws on the second.
+  slug: (data) => data.tag
+};
 ---
 
 <custom-masonry layout="50-50">
