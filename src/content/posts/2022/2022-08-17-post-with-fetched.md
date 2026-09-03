@@ -1,5 +1,6 @@
 ---
 title: 'Post with fetched content'
+slug: 'post-with-fetched-content'
 description: 'Eleventy Fetch fetches and caches resources - at configurable intervals. In this example I am fetching my public repositories with a cache duration of 1 day.'
 date: 2022-08-17
 tags: ['fetch', 'feature']
