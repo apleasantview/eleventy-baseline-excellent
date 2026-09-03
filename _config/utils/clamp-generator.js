@@ -11,7 +11,7 @@
  * @returns {array} {name: string, value: string}
  */
 
-import viewports from '../../_data/designTokens/viewports.json';
+import viewports from '../../src/_data/designTokens/viewports.json';
 
 export const clampGenerator = tokens => {
   const rootSize = 16;

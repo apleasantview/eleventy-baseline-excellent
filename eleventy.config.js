@@ -15,11 +15,11 @@ dotenv.config();
 import {load as yamlLoad} from 'js-yaml';
 
 //  config import
-import {getAllPosts, showInSitemap, tagList} from './src/_config/collections.js';
-import events from './src/_config/events.js';
-import filters from './src/_config/filters.js';
-import plugins from './src/_config/plugins.js';
-import shortcodes from './src/_config/shortcodes.js';
+import {getAllPosts, showInSitemap, tagList} from './_config/collections.js';
+import events from './_config/events.js';
+import filters from './_config/filters.js';
+import plugins from './_config/plugins.js';
+import shortcodes from './_config/shortcodes.js';
 
 export default async function (eleventyConfig) {
   // --------------------- Events: before build
@@ -116,7 +116,7 @@ export default async function (eleventyConfig) {
 
   // ----------------------  ignore test files
   if (process.env.ELEVENTY_ENV != 'test') {
-    eleventyConfig.ignores.add('src/common/pa11y.njk');
+    eleventyConfig.ignores.add('src/content/common/pa11y.njk');
   }
 
   // --------------------- general config
