@@ -4,44 +4,32 @@
 <html lang="{{ meta.lang }}">
   <!-- The order of elements in the head follows recommendations by Harry Roberts. learn more here: https://www.youtube.com/watch?v=MHyAOZ45vnU -->
 
-  <head>
-    <!-- 1 charset/viewport -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <baseline-head></baseline-head>
+  <meta name="theme-color" content="{{ meta.themeDark }}" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="{{ meta.themeLight }}" media="(prefers-color-scheme: light)" />
 
-    <!-- 2 title -->
-    <title>
-      {%- if title -%}
-        {{- title -}}
-      {%- else -%}
-        {{- meta.siteName -}}
-      {%- endif -%}
-    </title>
+  <!-- Prefetches likely next pages on link hover / interaction. Progressive enhancement:
+    supported in chromium browsers, everyone else ignores the script block.
+    https://developer.chrome.com/docs/web-platform/prerender-pages -->
+  <script type="speculationrules">
+    {
+      "prefetch": [
+        {
+          "where": {"href_matches": "/*"},
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
 
-    <base href="{{ page.url }}" />
-
-    <!-- 3 synchronous js  -->
-    {% include "head/js-inline.njk" %}
-
-    <!-- 4 schema settings -->
-    {% include "head/schema.njk" %}
-
-    <!-- 5 CSS  -->
-    <!-- <link rel="stylesheet" href="/assets/css/global.css?{{ assetHash }}" /> -->
-    {% include "head/css-inline.njk" %}
-
-    <!-- 6 preloads  -->
-    {% include "head/preloads.njk" %}
-
-    <!-- 7 defer  -->
-    {% include "head/js-defer.njk" %}
-
-    <!-- 8 meta tags, icons, open graph etc.  -->
-    {% include "head/meta-info.njk" %}
-
-    <!-- 9 speculative prefetching, chromium only -->
-    {% include "head/speculation-rules.njk" %}
-  </head>
+  {# Per-post share card. Emitted here because it cannot come from data —
+     posts.11tydata.js declines Baseline's with `ogImage: false`. #}
+  {% if 'posts' in (tags or []) and slug %}
+    <meta property="og:image" content="{{ ('/assets/og-images/' + slug + '-preview.jpeg') | url | absoluteUrl(settings.url) }}" />
+    <meta property="og:image:alt" content="{{ title }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+  {% endif %}
 
   <body class="{{ layout }}">
     {% set indicateActiveHome %}
