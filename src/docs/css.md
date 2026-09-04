@@ -10,9 +10,9 @@ The CSS system of this starter was invented by Andy Bell. If you want to know ex
 
 ### Inline CSS and bundles
 
-The main CSS file is now inline in production to improve performance, see `.src/_includes/head/css-inline.njk`.
+The main CSS file is now inline in production to improve performance, see `src/_includes/head/css-inline.njk`.
 
-You can add per-page or component bundles of CSS. Instead of adding your CSS file to the `src/assets/css/global/blocks/` directory, you can place them in `src/assets/css/local/`. All CSS files in there will be stored alongside `global.css` in `.src/_includes/css/`. You can now include them in the "local" bundle only on pages or components where you need them:
+You can add per-page or component bundles of CSS. Instead of adding your CSS file to the `src/assets/css/global/blocks/` directory, you can place them in `src/assets/css/local/`. All CSS files in there will be stored alongside `global.css` in `src/_includes/css/`. You can now include them in the "local" bundle only on pages or components where you need them:
 
 {% raw %}
 
