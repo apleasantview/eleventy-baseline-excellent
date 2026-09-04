@@ -13,7 +13,10 @@ const pagination = {
   alias: 'post'
 };
 
-const permalink = '/assets/og-images/{{ post.data.title | slugify }}-preview.svg';
+// From `slug`, not `title | slugify`. base.njk builds the og:image URL from `slug`,
+// so naming the file from the title made the two agree only by coincidence — they
+// would diverge the first time a title was edited.
+const permalink = '/assets/og-images/{{ post.data.slug | slugify }}-preview.svg';
 
 const eleventyExcludeFromCollections = true;
 
