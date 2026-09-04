@@ -193,6 +193,14 @@ The shortcode can be much terser than the HTML syntax, while the HTML syntax is 
     <figcaption>Example image using the HTML syntax</figcaption>
 </figure>
 
+## Animated images
+
+Animated GIF and WebP sources need `sharpOptions: { animated: true }` on Eleventy Image (currently set for both the HTML Transform plugin and the image shortcodes). When the source has multiple frames, Image v6+ keeps only animation-friendly output formats (typically WebP and/or GIF) from the `formats` list.
+
+![Built with Eleventy animated badge](/assets/images/blog/built-with-eleventy.gif)
+
+(Badge by [Chris Burnell](https://chrisburnell.com/note/eleventy-animated-88x31/). For crisp pixel art, use `image-rendering: pixelated`.)
+
 More:
 - https://www.11ty.dev/docs/plugins/image/
 - https://www.youtube.com/watch?v=e0OHgC677ec
