@@ -1,5 +1,4 @@
 // Eleventy
-import {EleventyRenderPlugin} from '@11ty/eleventy';
 import rss from '@11ty/eleventy-plugin-rss';
 import syntaxHighlight from '@11ty/eleventy-plugin-syntaxhighlight';
 import webc from '@11ty/eleventy-plugin-webc';
@@ -13,7 +12,6 @@ import {drafts} from './plugins/drafts.js';
 import {htmlConfig} from './plugins/html-config.js';
 
 export default {
-  EleventyRenderPlugin,
   rss,
   syntaxHighlight,
   webc,

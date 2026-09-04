@@ -9,8 +9,7 @@
     "node": ">=24.x.x"
   },
     "scripts": {
-    "clean": "rimraf dist/ src/_includes/css src/_includes/scripts",
-    "clean:og": "rimraf src/assets/og-images",
+    "clean": "rimraf dist/",
     "favicons": "node ./_config/setup/generate-favicons.js",
     "colors": "node ./_config/setup/create-colors.js",
     "screenshots": "node ./_config/setup/generate-screenshots.js",
