@@ -8,7 +8,7 @@
   "engines": {
     "node": ">=24.x.x"
   },
-    "scripts": {
+  "scripts": {
     "clean": "rimraf dist/",
     "favicons": "node ./_config/setup/generate-favicons.js",
     "colors": "node ./_config/setup/create-colors.js",
@@ -52,8 +52,6 @@
     "cssnano": "^9.0.2",
     "dayjs": "^1.11.23",
     "dotenv": "^17.4.2",
-    "esbuild": "^0.28.2",
-    "fast-glob": "^3.3.3",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^5.4.1",
     "markdown-it": "^14.3.0",
@@ -69,13 +67,11 @@
     "npm-run-all": "^4.1.5",
     "pa11y-ci": "^4.1.1",
     "postcss": "^8.5.28",
-    "postcss-cli": "^11.0.1",
     "postcss-import": "^17.0.0",
     "postcss-import-ext-glob": "^2.1.1",
     "postcss-js": "^5.1.0",
     "prettier-plugin-jinja-template": "^2.2.0",
     "rimraf": "^6.1.3",
-    "sanitize-html": "^2.17.7",
     "sharp": "^0.35.4",
     "sharp-ico": "^0.1.5",
     "slugify": "^1.6.9",
