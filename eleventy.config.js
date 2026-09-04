@@ -59,6 +59,9 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
     formats: ['webp', 'jpeg'],
     widths: ['auto'],
+    sharpOptions: {
+      animated: true
+    },
     htmlOptions: {
       imgAttributes: {
         loading: 'lazy',

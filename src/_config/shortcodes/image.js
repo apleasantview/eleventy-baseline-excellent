@@ -41,6 +41,7 @@ const processImage = async options => {
   const metadata = await Image(src, {
     widths: [...widths],
     formats: [...formats],
+    sharpOptions: {animated: true},
     urlPath: '/assets/images/',
     outputDir: './dist/assets/images/',
     filenameFormat: (id, src, width, format, options) => {
@@ -50,7 +51,9 @@ const processImage = async options => {
     }
   });
 
-  const lowsrc = metadata.jpeg[metadata.jpeg.length - 1];
+  // fallback when jpeg was filtered out (e.g. animated sources)
+  const lowsrcFormat = metadata.jpeg || Object.values(metadata).pop();
+  const lowsrc = lowsrcFormat[lowsrcFormat.length - 1];
 
   const imageSources = Object.values(metadata)
     .map(imageFormat => {
