@@ -27,12 +27,6 @@ export default async function (eleventyConfig) {
   // --------------------- Baseline
   await eleventyConfig.addPlugin(baseline(settings, { head: { showGenerator: true } }));
 
-  // --------------------- Events: before build
-  eleventyConfig.on('eleventy.before', async () => {
-    await events.buildAllCss();
-    await events.buildAllJs();
-  });
-
   // --------------------- custom wtach targets
   eleventyConfig.addWatchTarget('./src/assets/**/*.{css,js,svg,png,jpeg}');
   eleventyConfig.addWatchTarget('./src/_includes/**/*.{webc}');
@@ -79,9 +73,6 @@ export default async function (eleventyConfig) {
     });
   }
 
-  // ---------------------  bundle
-  eleventyConfig.addBundle('css', {hoist: true});
-
   // 	--------------------- Library and Data
   eleventyConfig.setLibrary('md', plugins.markdownLib);
   eleventyConfig.addDataExtension('yaml', contents => yamlLoad(contents));
@@ -118,7 +109,10 @@ export default async function (eleventyConfig) {
     'src/assets/images/favicon/*': '/',
 
     // -- node_modules
-    'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`
+    'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`,
+
+    // Custom elements referenced by <script src> rather than bundled.
+    'src/assets/js/components/': `assets/js/components/`
   });
 
   // ----------------------  ignore test files

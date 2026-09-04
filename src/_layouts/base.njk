@@ -31,6 +31,17 @@
     <meta property="og:image:height" content="630" />
   {% endif %}
 
+  <script>
+    window.__site = {
+      themeDark: '{{ meta.themeDark }}',
+      themeLight: '{{ meta.themeLight }}',
+      navBreakpoint: '{{ designTokens.viewports.navigation }}'
+    };
+  </script>
+
+  {% set jsThemeTogglePath = _baseline.paths.assets ~ "js/bundle/theme-toggle.js" %}
+  {{ jsThemeTogglePath | inlineESbuild({ minify: true }) | safe }}
+
   <body class="{{ layout }}">
     {% set indicateActiveHome %}
       {% if page.url == "/" %}
@@ -43,7 +54,7 @@
 
     {% include "partials/footer.njk" %}
     {%- if meta.easteregg -%}
-      <script type="module" src="/assets/scripts/components/custom-easteregg.js"></script>
+      <script type="module" src="/assets/js/components/custom-easteregg.js"></script>
       <custom-easteregg></custom-easteregg>
     {%- endif -%}
   </body>

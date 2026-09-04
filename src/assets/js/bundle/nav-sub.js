@@ -1,5 +1,8 @@
 const nav = document.querySelector('nav');
-const navBreakpoint = '{{ designTokens.viewports.navigation }}';
+
+// Handed in by base.njk on `window.__site` — esbuild does not render Nunjucks.
+// Fallback matches designTokens/viewports.json.
+const navBreakpoint = Number(window.__site?.navBreakpoint) || 662;
 
 // toggle submenu and aria-expanded on button click
 nav.addEventListener('click', event => {
