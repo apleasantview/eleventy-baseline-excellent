@@ -21,6 +21,7 @@ export const svgToJpeg = async () => {
         await Image(imageUrl, {
           formats: ['jpeg'],
           outputDir: ogImagesDir,
+          statsOnly: process.env.BASELINE_PREPASS_ACTIVE === '1',
           filenameFormat: function (id, src, width, format, options) {
             return `${outputFilename}.${format}`;
           }

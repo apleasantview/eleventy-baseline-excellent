@@ -44,6 +44,11 @@ const processImage = async options => {
     sharpOptions: {animated: true},
     urlPath: '/assets/images/',
     outputDir: './dist/assets/images/',
+    // Baseline's pre-pass renders every template and throws the render away, but
+    // eleventy-img writes through its own fs path and would encode anyway. statsOnly
+    // returns the same metadata with no files written, so the markup still resolves.
+    // Compare to '1': the flag is reset to the string '0', which is truthy.
+    statsOnly: process.env.BASELINE_PREPASS_ACTIVE === '1',
     filenameFormat: (id, src, width, format, options) => {
       const extension = path.extname(src);
       const name = path.basename(src, extension);
