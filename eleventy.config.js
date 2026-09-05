@@ -13,6 +13,9 @@ dotenv.config();
 // add yaml support
 import {load as yamlLoad} from 'js-yaml';
 
+import baseline, {config as baselineConfig} from '@apleasantview/eleventy-plugin-baseline';
+import settings from './src/_data/settings.js';
+
 //  config import
 import {getAllPosts, showInSitemap, tagList} from './_config/collections.js';
 import events from './_config/events.js';
@@ -21,6 +24,9 @@ import plugins from './_config/plugins.js';
 import shortcodes from './_config/shortcodes.js';
 
 export default async function (eleventyConfig) {
+  // --------------------- Baseline
+  await eleventyConfig.addPlugin(baseline(settings, { head: { showGenerator: true } }));
+
   // --------------------- Events: before build
   eleventyConfig.on('eleventy.before', async () => {
     await events.buildAllCss();
@@ -55,20 +61,23 @@ export default async function (eleventyConfig) {
     useTransform: true
   });
 
-  eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
-    formats: ['webp', 'jpeg'],
-    widths: ['auto'],
+  // Skip the transform during Baseline's pre-pass.
+  if (process.env.BASELINE_PREPASS_ACTIVE !== '1') {
+    eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
+      formats: ['webp', 'jpeg'],
+      widths: ['auto'],
     sharpOptions: {
       animated: true
     },
-    htmlOptions: {
-      imgAttributes: {
-        loading: 'lazy',
-        decoding: 'async'
-      },
-      pictureAttributes: {}
-    }
-  });
+      htmlOptions: {
+        imgAttributes: {
+          loading: 'lazy',
+          decoding: 'async'
+        },
+        pictureAttributes: {}
+      }
+    });
+  }
 
   // ---------------------  bundle
   eleventyConfig.addBundle('css', {hoist: true});
@@ -121,12 +130,10 @@ export default async function (eleventyConfig) {
 
 // https://www.11ty.dev/docs/config-shapes/#callback-function
 export const config = {
-  markdownTemplateEngine: 'njk',
+  ...baselineConfig,
 
   dir: {
-    output: 'dist',
-    input: 'src',
-    includes: '_includes',
+    ...baselineConfig.dir,
     layouts: '_layouts'
   }
 };
